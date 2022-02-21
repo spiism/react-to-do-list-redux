@@ -1,13 +1,27 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addTodos } from "../redux/reducer";
 import App from "./../App";
 
-const Todos = () => {
+const mapStateToPros = (state) => {
+  return {
+    todos: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTodo: (obj) => dispatch(addTodos(obj)),
+  };
+};
+
+const Todos = (props) => {
   const [todo, setTodo] = useState("");
   const handleChange = (e) => {
     setTodo(e.target.value);
   };
 
-  //   console.log(todo);
+  console.log("props from store", props);
 
   return (
     <div className="addTodos">
@@ -21,6 +35,6 @@ const Todos = () => {
   );
 };
 
-export default Todos;
+export default connect(mapStateToPros, mapDispatchToProps)(Todos);
 
 //rafce
