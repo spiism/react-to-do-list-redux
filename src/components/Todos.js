@@ -7,7 +7,7 @@ const Todos = () => {
     setTodo(e.target.value);
   };
 
-  console.log(todo);
+  //   console.log(todo);
 
   return (
     <div className="addTodos">
